@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Managerment</title>
+  <link rel="stylesheet" href="/bootstrap-5.2.3-dist/css/bootstrap.min.css">
+  <!-- icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+}
+
+.loc p{
+    margin-top: -24px;
+    margin-left: 20px;
+}
+.box{
+  flex-direction: row;
+}
+.list {
+  margin-left:150px;
+  margin-top:10px;
+}
+.xapxep {
+  margin-left: 300px;
+  margin-top: -680px;
+}
+
+.xapxep .btnPrice{
+  margin-left: 100px;
+  margin-top: -60px;
+  background: rgb(232 232 232);
+}
+
+.xapxep .btnNew{
+  margin-left: 240px;
+  margin-top: -105px;
+  background: rgb(232 232 232);
+}
+
+.xapxep .btnOld{
+  margin-left: 30px;
+  margin-top: -105px;
+  background: rgb(232 232 232);
+}
+
+i {
+  padding: 6px;
+  font-size: 22px;
+  color: pink;
+}
+
+.page {
+  align-self: center;
+  max-width: 170px;
+  margin-left: 1000px;
+}
+.btnAdd {
+  right: 0;
+  position: absolute;
+  margin-top:-70px;
+  margin-right: 20px;
+}
+.formAdd {
+  background: 	#DDDDDD;
+}
+.boxAdd {
+  margin-left: 80px;
+}
+.roleSp {
+  margin-left: 200px;
+}
+.changePass {
+  margin-left: 100px;
+}
+footer {
+  margin-top: 100px;
+}
+</style>
+</head>
+
+<body>
+  <!-- container -->
+  <div class="container-fluid">
+    <!-- menu -->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-4" href="#">Product Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/sp/phone">Home</a>
+            </li>
+            <!-- product -->
+            <li class="nav-item dropdown ms-3">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Product
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/sp/dienthoai">Điện Thoại</a></li>
+                <li><a class="dropdown-item" href="/sp/laptop">Laptop</a></li>
+                <li><a class="dropdown-item" href="/sp/tablet">Tablet</a></li>
+                <li><a class="dropdown-item" href="/sp/maytinh">Máy Tính</a></li>
+                <li><a class="dropdown-item" href="/sp/tainghe">Tai Nghe</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a href="/sp/list_Role" class="dropdown-item">Add New Role</a></li>
+              </ul>
+            </li>
+            <!-- account -->
+            <li class="nav-item dropdown ms-3">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Account
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/users/userList">Manage</a></li>
+                <li><a class="dropdown-item" href="#">Information & security</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Setting</a></li>
+              </ul>
+            </li>
+            <li class="nav-item ms-3 col-2">
+              <!-- href="/"  là gọi đến login của index-->
+              <a class="nav-link" href="/">Đăng nhập</a>
+            </li>
+             <!-- đổi mk -->
+             <div class="changePass dropdown ms-5 col-10">
+              <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                Đổi Mật Khẩu
+              </button>
+              <form class="dropdown-menu p-4">
+                <div class="mb-3">
+                  <label for="changePass" class="form-label">Nhập mật khẩu mới</label>
+                  <input type="password" class="form-control" id="changePass" placeholder="enter your password">
+                </div>
+                <div class="mb-3">
+                  <label for="re-changePass" class="form-label">Nhập lại mật khẩu</label>
+                  <input type="password" class="form-control" id="re-changePass" placeholder="enter your re-password">
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+            </div>
+            <!--  -->
+          </ul>
+          <form class="d-flex col-4" role="search" method="get">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name_laptop">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- box -->
+      <div class="col-3 ms-2 mt-4 bg bg-secondary-subtle">
+      <h4>Bộ lọc Tìm Kiếm</h4>
+      <div class="loai1">
+          <p>Theo Danh Mục</p>
+                <div class="loc ms-3">
+                  <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                  <p>Ốp lưng</p>
+                </div>
+                <!--  -->
+                <div class="loc ms-3">
+                  <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                  <p>Bao da</p>
+                </div>
+                <!--  -->
+                <div class="loc ms-3">
+                  <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                  <p>Sạc dự phòng</p>
+                </div>
+                <p>---------------</p>
+                <!-- loai2 -->
+                <div class="loai2">
+                  <p>Nơi bán</p>
+                  <div class="loc ms-3">
+                  <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Hà Nội</p>
+                  </div>
+                  <!--  -->
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Đà Nẵng</p>
+                  </div>
+                  <!--  -->
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Hồ Chí Minh</p>
+                  </div>
+                </div>
+                <p>---------------</p>
+                <!-- loại 3 -->
+                <div class="loai3">
+                  <p>Thương Hiệu</p>
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Apple</p>
+                  </div>
+                  <!--  -->
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Xiaomi</p>
+                  </div>
+                  <!--  -->
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Samsung</p>
+                  </div>
+                  <!--  -->
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Realme</p>
+                  </div>
+                  <!--  -->
+                  <div class="loc ms-3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                    <p>Vertu</p>
+                  </div>
+                </div>
+      </div>
+      
+    </div>
+
+    <!-- xắp xếp -->
+    <div class="xapxep">
+      <h4>Xắp xếp</h4>
+      <div class="dropdown">
+        <button class="btnPrice btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Giá tiền
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/sp/laptop?sortLaptop=1">Giá :Thấp đến cao</a></li>
+          <li><a class="dropdown-item" href="/sp/laptop?sortLaptop=-1">Giá Cao đến thấp</a></li>
+        </ul>
+      </div>
+      <!-- new -->
+      <button class="btnNew btn" type="button">
+        Mới Nhất
+      </button>
+      <!-- old -->
+      <button class="btnOld btn" type="button">
+        Cũ Nhất
+      </button>
+    </div>
+
+<!-- them mới -->
+<button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btnAdd btn btn-success">Thêm Sản Phẩm</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm Mới</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <!-- <div class="modal-body">
+    ...
+  </div> -->
+  <!-- form -->
+  <form class="formAdd">
+    <div class="boxAdd">
+       <div class="mb-3 col-10">
+      <label for="nameSp" class="form-label">Tên Sản Phẩm</label>
+      <input type="text" class="form-control" id="nameSp">
+    </div>
+    <div class="mb-3 col-10">
+      <label for="priceSp" class="form-label">Giá Sản Phẩm</label>
+      <input type="text" class="form-control" id="priceSp">
+    </div>
+    <div class="mb-3 col-10">
+      <label for="exampleFormControlTextarea1" class="form-label">Chi tiết Sản phẩm</label>
+      <textarea class="form-control" id="spDetail" rows="4"></textarea>
+    </div>
+    <div class="roleSp dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Thể Loại
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Điện Thoại</a></li>
+        <li><a class="dropdown-item" href="#">Laptop</a></li>
+        <li><a class="dropdown-item" href="#">Tablet</a></li>
+
+      </ul>
+    </div>
+    <div class="mb-3 col-10">
+      <label for="imageSp" class="form-label">Ảnh Sản Phẩm</label>
+      <!-- <img src="/images/library.jpg" class="rounded  d-block" alt="..." style="width: 80px;height: 80px;"> -->
+      <input type="text" class="form-control" id="img">
+
+    </div>
+
+    </div>
+   
+  </form>
+  <!--  -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</div>
+</div>
+</div>
+
+<h4 class="text-center">Laptop</h4>
+
+    <!-- table -->
+    <div class="list">
+      <div class="col-14 table-responsive mt-0  ms-5">
+      <table class="table table-bordered">
+          <thead>
+              <tr class="text-center">
+                  <th>Tên sản phẩm</th>
+                  <th>Giá tiền</th>
+                  <th>Mô Tả</th>
+                  <th>Ảnh</th>
+                  <th>Thể loại</th>
+                  <th>Chức năng</th>
+              </tr>
+          </thead>
+          <tbody>
+             <!-- list -->
+        <% list_laptop.forEach((row) => { %>
+          <tr>
+              <td class="text-center">
+                <a href="/sp/details/<%= row._id %>" style="text-decoration: none;">
+                  <%= row.name %>
+                  </a>  
+              </td>
+              <td class="text-center"><%= row.Price %></td>
+              <td class="text-center"><%= row.describe %></td>
+              <td>
+                  <img src="<%= row.img  %>" alt="" style="width: 80px; height: 80px;">
+              </td>
+              <!-- phải thông qua roleid mới lấy được roleName -->
+              <td class="text-center"><% if(typeof (row.roleId) != "undefined") {%>
+                  <%= row.roleId.roleName%>
+                  <% } %>
+              </td> 
+              <td>
+                <a href="/sp/editSp/<%= row._id %>">
+                  <i class="edit bi bi-pencil"></i>
+                </a>
+                <a href="/sp/deleteSp/<%= row._id %>"onclick="return confirm('bạn có chắc chắn muốn xóa không')">
+                  <i class="delete bi bi-trash"></i>
+                </a>
+              </td>
+          </tr>
+         <% }); %>
+          </tbody>
+      </table>
+    </div>
+    </div>
+    
+    <div class="page">
+      <nav aria-label="..." >
+      <ul class="pagination pagination-md" >
+        <li class="page-item" aria-current="page">
+            <a href="" class="page-link">1</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">....</a></li>
+        <li class="page-item"><a class="page-link" href="#">87</a></li>
+        <li class="page-item"><a class="page-link" href="#">88</a></li>
+      </ul>
+    </nav>
+    </div>
+    
+
+    <hr style="margin-bottom: -70px;">
+<footer class="text-center text-white" style="background-color: #caced1;">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Images -->
+    <section class="">
+      <div class="row">
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp"
+              class="w-100"
+            />
+            <a href="#!">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.2);"
+              ></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/fluid/city/111.webp"
+              class="w-100"
+            />
+            <a href="#!">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.2);"
+              ></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/fluid/city/112.webp"
+              class="w-100"
+            />
+            <a href="#!">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.2);"
+              ></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/fluid/city/114.webp"
+              class="w-100"
+            />
+            <a href="#!">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.2);"
+              ></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/fluid/city/115.webp"
+              class="w-100"
+            />
+            <a href="#!">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.2);"
+              ></div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/new/fluid/city/116.webp"
+              class="w-100"
+            />
+            <a href="#!">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.2);"
+              ></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section: Images -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-white" href="https://www.facebook.com/">Tống Đỗ Minh Quân</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+    <!-- div của container -->
+  </div>
+
+
+  <!--  -->
+  <script src="../bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
